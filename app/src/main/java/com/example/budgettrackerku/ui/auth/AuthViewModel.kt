@@ -34,6 +34,7 @@ class AuthViewModel : ViewModel() {
     }
 
     fun register(
+        name: String,
         email: String,
         password: String,
         onSuccess: () -> Unit
@@ -42,6 +43,7 @@ class AuthViewModel : ViewModel() {
         errorMessage.value = null
 
         repository.register(
+            name,
             email,
             password,
             onSuccess = {

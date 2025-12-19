@@ -1,8 +1,3 @@
 package com.example.budgettrackerku.ui.navigation
 
-sealed class Screen(val route: String) {
-
-    object Login : Screen("login")
-    object Register : Screen("register")
-    object Home : Screen("home")
-}
+// This file is now obsolete. Navigation is handled directly in MainActivity.
