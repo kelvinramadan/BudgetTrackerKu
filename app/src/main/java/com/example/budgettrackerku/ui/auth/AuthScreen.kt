@@ -74,8 +74,8 @@ fun AuthScreen(onLoginSuccess: () -> Unit) {
 
 @Composable
 fun LoginContent(viewModel: AuthViewModel, onRegisterClick: () -> Unit, onLoginSuccess: () -> Unit) {
-    var email by remember { mutableStateOf("nicholas@ergemla.com") }
-    var password by remember { mutableStateOf("password") }
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
     val isLoading by viewModel.isLoading
     val errorMessage by viewModel.errorMessage
     val context = LocalContext.current
@@ -101,7 +101,13 @@ fun LoginContent(viewModel: AuthViewModel, onRegisterClick: () -> Unit, onLoginS
             CircularProgressIndicator()
         } else {
             Button(
-                onClick = { viewModel.login(email, password, onLoginSuccess) },
+                onClick = { 
+                    viewModel.login(email, password) {
+                        email = ""
+                        password = ""
+                        onLoginSuccess()
+                    }
+                },
                 modifier = Modifier.fillMaxWidth().height(50.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
                 contentPadding = PaddingValues()
@@ -157,7 +163,14 @@ fun RegisterContent(viewModel: AuthViewModel, onLoginClick: () -> Unit, onRegist
             CircularProgressIndicator()
         } else {
             Button(
-                onClick = { viewModel.register(name, email, password, onRegisterSuccess) },
+                onClick = { 
+                    viewModel.register(name, email, password) {
+                        name = ""
+                        email = ""
+                        password = ""
+                        onRegisterSuccess()
+                    }
+                },
                 modifier = Modifier.fillMaxWidth().height(50.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
                 contentPadding = PaddingValues()

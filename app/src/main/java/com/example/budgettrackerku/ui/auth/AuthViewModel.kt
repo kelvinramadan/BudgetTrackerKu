@@ -2,11 +2,13 @@ package com.example.budgettrackerku.ui.auth
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.example.budgettrackerku.repository.AuthRepository
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class AuthViewModel : ViewModel() {
 
-    private val repository = AuthRepository()
+    private val auth = FirebaseAuth.getInstance()
+    private val database = FirebaseDatabase.getInstance().reference
 
     val isLoading = mutableStateOf(false)
     val errorMessage = mutableStateOf<String?>(null)
@@ -19,18 +21,15 @@ class AuthViewModel : ViewModel() {
         isLoading.value = true
         errorMessage.value = null
 
-        repository.login(
-            email,
-            password,
-            onSuccess = {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
                 isLoading.value = false
-                onSuccess()
-            },
-            onError = {
-                isLoading.value = false
-                errorMessage.value = it
+                if (task.isSuccessful) {
+                    onSuccess()
+                } else {
+                    errorMessage.value = task.exception?.message
+                }
             }
-        )
     }
 
     fun register(
@@ -42,18 +41,29 @@ class AuthViewModel : ViewModel() {
         isLoading.value = true
         errorMessage.value = null
 
-        repository.register(
-            name,
-            email,
-            password,
-            onSuccess = {
-                isLoading.value = false
-                onSuccess()
-            },
-            onError = {
-                isLoading.value = false
-                errorMessage.value = it
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val userId = auth.currentUser?.uid
+                    if (userId != null) {
+                        val user = mapOf("name" to name, "email" to email)
+                        database.child("users").child(userId).setValue(user)
+                            .addOnCompleteListener { dbTask ->
+                                isLoading.value = false
+                                if (dbTask.isSuccessful) {
+                                    onSuccess()
+                                } else {
+                                    errorMessage.value = dbTask.exception?.message
+                                }
+                            }
+                    } else {
+                        isLoading.value = false
+                        errorMessage.value = "Failed to get user ID."
+                    }
+                } else {
+                    isLoading.value = false
+                    errorMessage.value = task.exception?.message
+                }
             }
-        )
     }
 }

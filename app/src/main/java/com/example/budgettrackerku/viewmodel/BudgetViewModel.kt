@@ -1,6 +1,7 @@
 package com.example.budgettrackerku.viewmodel
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -23,7 +24,6 @@ class BudgetViewModel(
     val userId: String get() = currentUser?.uid ?: ""
 
     // --- State Data ---
-    // Menggunakan flatMapLatest agar data otomatis berubah jika user login/logout
     private val _refreshTrigger = MutableStateFlow(userId)
 
     val transactions = _refreshTrigger.flatMapLatest { uid ->
@@ -55,20 +55,28 @@ class BudgetViewModel(
     fun addTransaction(title: String, amount: Double, type: String, category: String) {
         if (userId.isEmpty()) return
         viewModelScope.launch {
-            repository.addTransaction(
-                TransactionEntity(
-                    userId = userId,
-                    title = title,
-                    amount = amount,
-                    type = type,
-                    category = category
+            try {
+                repository.addTransaction(
+                    TransactionEntity(
+                        userId = userId,
+                        title = title,
+                        amount = amount,
+                        type = type,
+                        category = category
+                    )
                 )
-            )
+                _refreshTrigger.value = userId // Trigger a refresh
+            } catch (e: Exception) {
+                Log.e("BudgetViewModel", "Error adding transaction", e)
+            }
         }
     }
 
     fun deleteTransaction(transaction: TransactionEntity) {
-        viewModelScope.launch { repository.deleteTransaction(transaction) }
+        viewModelScope.launch { 
+            repository.deleteTransaction(transaction)
+            _refreshTrigger.value = userId // Trigger a refresh
+        }
     }
 
     fun logout() {

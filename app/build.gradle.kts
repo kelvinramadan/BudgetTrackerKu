@@ -60,9 +60,10 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
-    // --- Firebase (Auth) ---
+    // --- Firebase ---
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.database.ktx)
 
     // --- Room Database ---
     implementation(libs.androidx.room.runtime)
