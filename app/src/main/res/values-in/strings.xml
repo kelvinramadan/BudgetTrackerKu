@@ -1,0 +1,116 @@
+<resources>
+    <string name="app_name">BudgetTrackerKu</string>
+
+    <!-- Generic -->
+    <string name="ok">OK</string>
+    <string name="cancel">Batal</string>
+    <string name="save">Simpan</string>
+    <string name="edit">Ubah</string>
+    <string name="confirm">Konfirmasi</string>
+    <string name="close">Tutup</string>
+    <string name="reset">Atur Ulang</string>
+
+    <!-- Home Screen -->
+    <string name="home_title">Beranda</string>
+    <string name="tab_accounts">Akun</string>
+    <string name="tab_budgets_goals">Anggaran &amp; Tujuan</string>
+    <string name="welcome_back">Selamat datang kembali %1$s</string>
+    <string name="cash">Tunai</string>
+    <string name="balance_structures">Struktur Saldo</string>
+    <string name="last_30_days">30 HARI TERAKHIR</string>
+    <string name="today">HARI INI</string>
+    <string name="show_more">Lihat selengkapnya</string>
+    <string name="history_title">Riwayat</string>
+    <string name="no_records_yet">Belum ada catatan</string>
+    <string name="balance_trend">Tren Saldo</string>
+    <string name="vs_past_period">vs periode lalu</string>
+    <string name="not_enough_data">Data tidak cukup untuk tren</string>
+    <string name="balance">Saldo</string>
+    
+    <!-- Profile Screen -->
+    <string name="your_profile">Profil Anda</string>
+    <string name="uid">UID</string>
+    <string name="nickname">Nama Panggilan</string>
+    <string name="email">Email</string>
+    <string name="logout">Keluar</string>
+    <string name="edit_nickname_title">Ubah Nama Panggilan</string>
+    <string name="nickname_updated">Nama panggilan diperbarui</string>
+    <string name="change_photo">Ubah foto</string>
+    
+    <!-- Report Screen -->
+    <string name="reports_title">Laporan</string>
+    <string name="expenses_breakdown">Rincian Pengeluaran</string>
+    <string name="income_breakdown">Rincian Pemasukan</string>
+    
+    <!-- Transaction Screen -->
+    <string name="transaction_history_title">Riwayat Transaksi</string>
+    <string name="balance_out_prefix">Saldo keluar: </string>
+    <string name="balance_in_prefix">Saldo masuk: </string>
+    
+    <!-- Filtering -->
+    <string name="filter_today">Hari Ini</string>
+    <string name="filter_7_days">7 Hari Terakhir</string>
+    <string name="filter_30_days">30 Hari Terakhir</string>
+    <string name="filter_all_time">Semua Waktu</string>
+    
+    <string name="filter_type_all">Semua Transaksi</string>
+    <string name="filter_type_income">Pemasukan</string>
+    <string name="filter_type_expense">Pengeluaran</string>
+    
+    <!-- Budget Screen -->
+    <string name="monthly_budget_title">Anggaran Bulanan</string>
+    <string name="set_budget_for">Atur Anggaran untuk %1$s</string>
+    <string name="limit_amount_label">Jumlah Batas (IDR)</string>
+    <string name="budget_saved_toast">Anggaran untuk %1$s disimpan</string>
+    <string name="no_expenses_budgets">Belum ada pengeluaran atau anggaran.</string>
+    <string name="budget_left">Sisa: %1$s</string>
+    <string name="budget_over">Lebih: %1$s</string>
+    <string name="no_limit_set">Belum ada batas</string>
+    <string name="limit_set_tap">Ketuk untuk atur anggaran</string>
+    <string name="budget_exceeded_msg">Anda telah melebihi anggaran!</string>
+    
+    <!-- Add Transaction Screen -->
+    <string name="income">Pemasukan</string>
+    <string name="expense">Pengeluaran</string>
+    <string name="date_label">Tanggal</string>
+    <string name="amount_label">Jumlah</string>
+    <string name="category_label">Kategori</string>
+    <string name="select_category_placeholder">Pilih Kategori</string>
+    <string name="description_label">Deskripsi</string>
+
+    <!-- Categories (Display names) -->
+    <string name="cat_food">Makanan</string>
+    <string name="cat_shopping">Belanja</string>
+    <string name="cat_social">Sosial</string>
+    <string name="cat_pets">Hewan Peliharaan</string>
+    <string name="cat_transport">Transportasi</string>
+    <string name="cat_culture">Hiburan</string>
+    <string name="cat_household">Rumah Tangga</string>
+    <string name="cat_apparel">Pakaian</string>
+    <string name="cat_beauty">Kecantikan</string>
+    <string name="cat_health">Kesehatan</string>
+    <string name="cat_education">Pendidikan</string>
+    <string name="cat_gift">Hadiah</string>
+    <string name="cat_other">Lainnya</string>
+    <string name="cat_allowance">Uang Saku</string>
+    <string name="cat_salary">Gaji</string>
+    <string name="cat_petty_cash">Kas Kecil</string>
+    <string name="cat_bonus">Bonus</string>
+    
+    <!-- Settings / Language -->
+    <string name="settings">Pengaturan</string>
+    <string name="language">Bahasa</string>
+    <string name="choose_language">Pilih Bahasa</string>
+    <string name="language_en">Inggris</string>
+    <string name="language_id">Bahasa Indonesia</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Pengaturan</string>
+    <string name="appearance">Tampilan</string>
+    <string name="dark_mode">Mode Gelap</string>
+    <string name="light_mode">Mode Terang</string>
+    <string name="system_default">Default Sistem</string>
+    <string name="general">Umum</string>
+    <string name="theme">Tema</string>
+    <string name="select_theme">Pilih Tema</string>
+</resources>

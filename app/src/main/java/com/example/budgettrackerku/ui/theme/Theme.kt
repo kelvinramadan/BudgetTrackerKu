@@ -30,13 +30,13 @@ private val LightColorScheme = lightColorScheme(
     primary = BluePrimary,
     secondary = GradientEnd,
     tertiary = GradientStart,
-    background = White,
-    surface = White,
+    background = BackgroundLight, 
+    surface = SurfaceLight,
     onPrimary = White,
     onSecondary = White,
-    onBackground = Black,
-    onSurface = Black,
-    surfaceVariant = LightGray,
+    onBackground = TextPrimary,
+    onSurface = TextPrimary,
+    surfaceVariant = TextSecondary,
     outline = BorderColor
 )
 
@@ -50,9 +50,15 @@ fun BudgetTrackerKuTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            // The design shows a solid blue background for the header area including status bar
-            window.statusBarColor = colorScheme.primary.toArgb()
-            // Status bar icons should be light to contrast with the blue background
+            
+            // Light Mode: Status Bar is Dark (Slate) to match Top Bar. Icons = Light (false).
+            // Dark Mode: Status Bar is Standard Dark. Icons = Light (false).
+            // So icons are ALWAYS Light.
+            
+            val statusBarColor = if (darkTheme) colorScheme.background.toArgb() else BottomBarBackground.toArgb()
+            window.statusBarColor = statusBarColor
+            window.navigationBarColor = colorScheme.surface.toArgb()
+
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false
         }
     }

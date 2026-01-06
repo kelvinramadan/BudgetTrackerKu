@@ -47,6 +47,7 @@ android {
 
 dependencies {
     implementation("androidx.compose.material:material-icons-extended:1.7.5")
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
@@ -64,11 +65,7 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.database.ktx)
-
-    // --- Room Database ---
-    implementation(libs.androidx.room.runtime)
-    implementation(libs.androidx.room.ktx)
-    ksp(libs.androidx.room.compiler) // Compiler Room menggunakan KSP
+    implementation(libs.firebase.analytics.ktx) // DITAMBAHKAN
 
     // --- Testing ---
     testImplementation(libs.junit)

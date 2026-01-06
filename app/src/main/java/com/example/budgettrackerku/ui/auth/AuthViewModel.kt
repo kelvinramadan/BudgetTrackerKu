@@ -8,7 +8,8 @@ import com.google.firebase.database.FirebaseDatabase
 class AuthViewModel : ViewModel() {
 
     private val auth = FirebaseAuth.getInstance()
-    private val database = FirebaseDatabase.getInstance().reference
+    // Ensure we write to the same database instance we read from
+    private val database = FirebaseDatabase.getInstance("https://budgettrackerk-default-rtdb.asia-southeast1.firebasedatabase.app").reference
 
     val isLoading = mutableStateOf(false)
     val errorMessage = mutableStateOf<String?>(null)
